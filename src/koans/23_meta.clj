@@ -43,10 +43,10 @@
   "You can also create a new object from another object with metadata"
   (= {:league "National League" :park "AT&T Park"}
      (meta (vary-meta giants
-                      assoc __ __)))
+                      assoc :park "AT&T Park")))
 
   "But it won't affect behavior like equality"
-  (= __ (vary-meta giants dissoc :league))
+  (= 'Giants (vary-meta giants dissoc :league))
 
   "Or the object's printed representation"
-  (= __ (pr-str (vary-meta giants dissoc :league))))
+  (= "Giants" (pr-str (vary-meta giants dissoc :league))))
