@@ -9,7 +9,7 @@
   (= '(0 1 2 3 4) (range 5))
 
   "Only take what you need when the sequence is large"
-  (= [0 1 2 3 4 5 6 7 8 9]
+  (= (range 10)
      (take 10 (range 100)))
 
   "Or limit results by dropping what you don't need"
@@ -17,7 +17,7 @@
      (drop 95 (range 100)))
 
   "Iteration provides an infinite lazy sequence"
-  (= [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19] (take 20 (iterate inc 0)))
+  (= (range 20) (take 20 (iterate inc 0)))
 
   "Repetition is key"
   (= [:a :a :a :a :a :a :a :a :a :a]
@@ -25,4 +25,5 @@
 
   "Iteration can be used for repetition"
   (= (repeat 100 :hello)
-     (take 100 (iterate ___ :hello))))
+     (take 100 (iterate identity :hello))))
+
